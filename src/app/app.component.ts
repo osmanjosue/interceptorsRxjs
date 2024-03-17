@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuariosService } from './services/usuarios.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,12 @@ export class AppComponent {
   constructor(private usuariosService: UsuariosService) {
 
     this.usuariosService.obtenerUsuarios()
-      .subscribe(console.log);
+      .subscribe({
+        next: console.log,
+        error: (err: HttpErrorResponse) => {
+          console.log('Error en el appComponent ' + err)
+        }
+      })
 
   }
 
