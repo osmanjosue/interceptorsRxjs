@@ -18,20 +18,12 @@ export class UsuariosService {
       'token-usuario': 'ABC12312314fasdfiweru'
     }) */
 
-    return this.http.get(`https://reqres.in/api/user`, {
+    return this.http.get(`https://reqres6.in/api/user`, {
       params,/*
       headers */
     }).pipe(
       map((resp: any) => resp['data']),
-      catchError(this.manejarError)
     );
-  }
-
-  manejarError = (err: HttpErrorResponse) => {
-    console.log('sucedio un error')
-    console.log('Registrado en el log file');
-    console.warn(err);
-    return throwError(() => new Error('Error personalizado'));
   }
 
 }
